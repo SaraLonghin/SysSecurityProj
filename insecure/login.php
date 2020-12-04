@@ -6,9 +6,9 @@ include("includes/connection.php");
 	if (isset($_POST['login'])) {
 
 		$email =  $_POST['email'];
-		$pass = $_POST['pass'];
+		$pass =  $_POST['pass'];
 
-		$select_user = "select * from users where user_email='$email' AND user_pass='$pass' ";
+		$select_user = "select * from users where user_email='$email' AND user_pass='$pass' AND status='verified'";
 		$query= mysqli_query($con, $select_user);
 		
 

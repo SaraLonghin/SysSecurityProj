@@ -1,3 +1,3 @@
 <?php
-$con = mysqli_connect("localhost","root","","social");
+$con = mysqli_connect("localhost","root","","facehook");
 ?>

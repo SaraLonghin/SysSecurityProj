@@ -1,97 +1,437 @@
 
-.container {
-  max-width: 960px;
-    background-color: black;
-}
 
-span {
-  color:#00CED1;
-  
-}
 
+
+html,
 body {
-    background: black;
-   
+	height: 100%;
+	font-family: "Lato", sans-serif;
+	-webkit-font-smoothing: antialiased;
+	font-smoothing: antialiased;
 }
 
-.rectangle {
-    background-image: url('https://images.pexels.com/photos/1103970/pexels-photo-1103970.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260');
-    opacity: 0.95;
-    background-size: cover;
-    border-radius: 5px;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	color: #20509e;
+	margin: 0;
+	font-weight: 500;
+	font-family: "Futura", sans-serif;
 }
 
-.primary-btn {
-  border-radius: 30px;
-  font-weight: bold;
-   color: black;
-    background-color: #00CED1;
-    margin-right: 30px;
-    margin-bottom: 15px;
-    margin-left: 20px;
+h1 {
+	font-size: 70px;
+}
+
+h2 {
+	font-size: 48px;
+}
+
+h3 {
+	font-size: 30px;
+}
+
+h4 {
+	font-size: 24px;
+}
+
+h5 {
+	font-size: 20px;
+}
+
+h6 {
+	font-size: 14px;
+}
+
+p {
+	font-size: 15.7px;
+	color: #75849a;
+	line-height: 1.6;
+}
+
+img {
+	max-width: 100%;
+}
+
+input:focus,
+select:focus,
+button:focus,
+textarea:focus {
+	outline: none;
+}
+
+a:hover,
+a:focus {
+	text-decoration: none;
+	outline: none;
+}
+
+ul,
+ol {
+	padding: 0;
+	margin: 0;
+}
+
+/*---------------------
+	Helper CSS
+-----------------------*/
+
+.spad {
+	padding-top: 100px;
+	padding-bottom: 90px;
+}
+
+.section-title {
+	margin-bottom: 60px;
+}
+
+.section-title h2 {
+	margin-bottom: 20px;
+}
+
+.section-title p {
+	margin-bottom: 0;
+}
+
+.set-bg {
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center 0;
+}
+
+.text-white h1,
+.text-white h2,
+.text-white h3,
+.text-white h4,
+.text-white h5,
+.text-white p,
+.text-white span,
+.text-white li,
+.text-white a {
+	color: #fff;
+}
+
+/*---------------------
+	Commom elements
+-----------------------*/
+
+/* Buttons */
+
+.site-btn {
+	position: relative;
+	display: inline-block;
+	padding: 15px 50px;
+	font-size: 16px;
+	font-weight: 500;
+	line-height: 16px;
+	border-radius: 50px;
+	font-family: "Futura", sans-serif;
+	min-width: 150px;
+	text-align: center;
+	cursor: pointer;
+	color: #fff;
+    margin-right: 20px;
     border: none;
 }
 
-.primary-btn:hover {
-    background-color: black;
-    color: #00CED1;
+.site-btn:hover {
+	color: #fff;
 }
 
-.whitened {
-    background-color: white;
+
+.gradient-bg,
+.site-btn.sb-gradients,
+.member-social a:hover,
+.single-blog-page .social-share a:hover,
+.comment .comment-content .c-btn:hover,
+.comment-form label {
+	
+	background: -webkit-gradient(linear, left top, right top, from(#3e2bce), color-stop(100%, #2dd3aa), color-stop(100%, #2dd3aa), to(#2dd3aa));
+	background: -o-linear-gradient(left, #3e2bce 0%, #2dd3aa 100%, #2dd3aa 100%, #2dd3aa 100%);
+	background: linear-gradient(to right, #3e2bce 0%, #2dd3aa 100%, #2dd3aa 100%, #2dd3aa 100%);
+	
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3e2bce', endColorstr='#2dd3aa', GradientType=1);
+	
 }
 
-.whitened:hover {
-    color: white;
+/* Image Popup */
+
+.img-popup-warp .mfp-content,
+.img-popup-warp.mfp-ready.mfp-removing .mfp-content {
+	opacity: 0;
+	-webkit-transform: scale(0.8);
+	-ms-transform: scale(0.8);
+	transform: scale(0.8);
+	-webkit-transition: all 0.4s;
+	-o-transition: all 0.4s;
+	transition: all 0.4s;
 }
 
-.product-device {
-  position: absolute;
-  right: 10%;
-  bottom: -30%;
-  width: 300px;
-  height: 540px;
-  background-color: #202020;
-  border-radius: 21px;
-  -webkit-transform: rotate(30deg);
-  transform: rotate(30deg);
+.img-popup-warp.mfp-ready .mfp-content {
+	opacity: 1;
+	-webkit-transform: scale(1);
+	-ms-transform: scale(1);
+	transform: scale(1);
 }
 
-.product-device::before {
-  position: absolute;
-  top: 10%;
-  right: 10px;
-  bottom: 10%;
-  left: 10px;
-  content: "";
-  background-image: url('assets/back.png');
-    background-size: contain;
-  border-radius: 5px;
+
+
+/*---------------------
+	Hero Section
+-----------------------*/
+
+.hero-section {
+	height: 900px;
+	padding-top: 260px;
+	display: block;
+	background-image: url("includes/hero-bg.png");
+	background-size: cover;
+	background-color: #f3f7f9;
+	background-position: right top;
+	background-repeat: no-repeat;
+	position: relative;
+	overflow: hidden;
 }
 
-.product-device-2 {
-  top: -25%;
-  right: auto;
-  bottom: 0;
-  left: 5%;
+.hero-section .laptop-image {
+	width: 685px;
+	max-width: none;
+	position: relative;
+	left: 80px;
 }
 
-.product-device-2::before {
-    background-image: url('assets/back-2.png');
-    background-size: contain;
+.hero-text {
+	padding-top: 60px;
 }
 
-.box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
-
-.flex-equal > * {
-  -ms-flex: 1;
-  -webkit-box-flex: 1;
-  flex: 1;
-}
-@media (max-width: 992px) {
-    .product-device, product-device-2 {
-        visibility: hidden;
-    }
+.hero-text h2 {
+	font-size: 70px;
+	margin-bottom: 35px;
 }
 
-.overflow-hidden { overflow: hidden; }
+.hero-text h2 span {
+	color: #16d0c5;
+}
+
+.hero-text h4 {
+	color: #75849a;
+	font-size: 22px;
+}
+
+.hero-subscribe-from {
+	margin-top: 50px;
+	display: block;
+}
+
+.hero-subscribe-from input {
+	width: 315px;
+	border: 1px solid #ebebeb;
+	background: #fff;
+	height: 48px;
+	padding: 0 25px;
+	border-radius: 50px;
+	font-family: "Futura", sans-serif;
+	font-size: 16px;
+	margin-right: 8px;
+	margin-bottom: 20px;
+}
+
+/*---------------------
+  About Section
+-----------------------*/
+
+.about-section .container {
+	position: relative;
+}
+
+.about-text h2 {
+	font-size: 48px;
+	margin-bottom: 25px;
+}
+
+.about-text h5 {
+	font-family: "Lato", sans-serif;
+	margin-bottom: 20px;
+}
+
+.about-text p {
+	font-size: 18px;
+}
+
+.about-img {
+	position: absolute;
+	top: 0;
+	left: -120px;
+	width: 662px;
+}
+
+/*---------------------
+	Footer Section
+-----------------------*/
+
+.footer-widget span {
+	color: #acb9cc;
+}
+
+.footer-widget p {
+	margin-bottom: 20px;
+}
+
+.footer-widget .widget-title {
+	margin-bottom: 30px;
+	font-size: 20px;
+}
+
+.footer-widget ul {
+	list-style: none;
+}
+
+.footer-widget ul a {
+	font-size: 16px;
+	color: #75849a;
+	display: block;
+	margin-bottom: 12px;
+}
+
+.footer-widget ul li:last-child a {
+	margin-bottom: 0;
+}
+
+.social a {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	color: #fff;
+	display: inline-block;
+	margin-right: 10px;
+	text-align: center;
+	padding-top: 7px;
+	font-size: 18px;
+}
+
+.footer-bottom {
+	border-top: 1px solid #ebebeb;
+	padding: 30px 0;
+}
+
+.footer-nav {
+	list-style: none;
+}
+
+.footer-nav li {
+	display: inline-block;
+}
+
+.footer-nav li a {
+	color: #75849a;
+	font-size: 14px;
+	margin-left: 20px;
+}
+
+/*------------------
+	Responsive
+---------------------*/
+
+@media (min-width: 1200px) {
+	.container {
+		max-width: 1170px;
+	}
+}
+
+@media (max-width: 1585px) {
+	.hero-section .laptop-image {
+		left: 0;
+	}
+}
+
+@media (max-width: 1425px) {
+	.hero-section, {
+		background-position: right 30% top;
+	}
+	.hero-section .laptop-image {
+		width: auto;
+		max-width: 100%;
+		top: 70px;
+	}
+	.about-img {
+		left: -50px;
+		width: 600px;
+	}
+}
+
+/* Medium screen : 992px. */
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+	.hero-section,
+	.page-info-section {
+		background-position: right 23% top;
+	}
+	.about-img {
+		left: 0px;
+		width: 480px;
+	}
+}
+
+/* Tablet :768px. */
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+	.hero-section {
+		background-position: right 25% top;
+		height: 730px;
+		padding-top: 160px;
+	}
+	.hero-text h2 {
+		font-size: 45px;
+	}
+	.process-step:after {
+		width: 154px;
+		height: 35px;
+		top: -10px;
+		right: -44%;
+		background-size: contain;
+	}
+	.about-img {
+		position: relative;
+		display: block;
+		left: 0;
+		width: auto;
+		margin-top: 50px;
+	}
+	.footer-widget {
+		margin-bottom: 30px;
+	}
+}
+
+/* Large Mobile :480px. */
+
+@media only screen and (max-width: 767px) {
+	.hero-text h2 {
+		font-size: 40px;
+	}
+	.hero-section {
+		height: auto;
+		padding-bottom: 100px;
+		padding-top: 160px;
+		background-position: right 50% top;
+	}
+    .about-img {
+		position: relative;
+		display: block;
+		left: 0;
+		width: auto;
+		margin-top: 50px;
+	}
+	.page-info-section {
+		background-position: right 56% top;
+		margin-top: 97px;
+	}
+	.page-info-section h2 {
+		font-size: 40px;
+	}
+	.footer-widget {
+		margin-bottom: 30px;
+	}
+}

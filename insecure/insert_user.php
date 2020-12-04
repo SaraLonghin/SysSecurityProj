@@ -34,17 +34,13 @@ include("includes/connection.php");
 			exit();
 		}
 
-		$rand = rand(1, 3); //Random number between 1 and 3
-
-			if($rand == 1)
-				$profile_pic = "head_red.jpg";
-			else if($rand == 2)
-				$profile_pic = "head_sun_flower.png";
-			else if($rand == 3)
-				$profile_pic = "head_turqoise.jpg";
+			if($gender == 'Male')
+				$profile_pic = "male.svg";
+			else if($gender == 'Female')
+				$profile_pic = "female.svg";
 
 		$insert = "insert into users (f_name,l_name,user_name,describe_user,Relationship,user_pass,user_email,user_country,user_gender,user_birthday,user_image,user_cover,user_reg_date,status,posts,recovery_account)
-		values('$first_name','$last_name','$username','Still thinking about it!','Unavailable','$pass','$email','$country','$gender','$birthday','$profile_pic','default_cover.jpg',NOW(),'$status','$posts','Nobody')";
+		values('$first_name','$last_name','$username','Still thinking about it!','Unavailable','$pass','$email','$country','$gender','$birthday','$profile_pic','default_image.jpeg',NOW(),'$status','$posts','Nobody')";
 		
 		$query = mysqli_query($con, $insert);
 

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<?php
+session_start();
+include("includes/header.php");
+
+if(!isset($_SESSION['user_email'])){
+	header("location: index.php");
+}
+?>
+<html>
+<head>
+	<?php
+		$user = $_SESSION['user_email'];
+		$get_user = "select * from users where user_email='$user'";
+		$run_user = mysqli_query($con,$get_user);
+		$row = mysqli_fetch_array($run_user);
+
+		$user_name = $row['user_name'];
+	?>
+	<title><?php echo "$user_name"; ?>'s Feed</title>
+	<meta charset="utf-8">
+ 	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="style2.css">
+</head>
+<body>
+<div class="row">
+	<div style="margin-bottom: 50px; margin-left: 24.8%;" class="col-sm-6">
+		<center>
+		<form action="<?php echo $_SERVER["PHP_SELF"];?>" method="post" id="f" enctype="multipart/form-data">
+		<textarea class="form-control com-textarea" id="content" rows="4" name="content" placeholder="What's on your mind? Express it by selecting and uploading a picture!"></textarea><br>
+		<label class="btn site-btn blu-btn" style='margin-right: 10px;' id="upload_image_button">Select Image
+		<input type="file" name="upload_image" size="30">
+		</label>
+		<button class="btn site-btn grn-btn" name="sub">Post</button>
+		</form>
+		<?php insertPost(); ?>
+		</center>
+	</div>
+</div>
+<div class="row">
+	<div class="col-sm-12">
+		<?php echo get_posts(); ?>
+	</div>
+</div>
+</body>
+</html>
