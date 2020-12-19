@@ -7,12 +7,11 @@ include("includes/connection.php");
 
 		$email =  $_POST['email'];
 		$pass =  $_POST['pass'];
-
 		$select_user = "select * from users where user_email='$email' AND user_pass='$pass' AND status='verified'";
 		$query= mysqli_query($con, $select_user);
-		
+		$rows= mysqli_num_rows($query);
 
-		if($query){
+		if($rows){
 			$_SESSION['user_email'] = $email;
 
 			echo "<script>window.open('home.php', '_self')</script>";

@@ -1,3 +1,3 @@
 <?php
-$con = mysqli_connect("localhost","root","","facehook");
+$con = mysqli_connect("localhost","root","","insecurefacehook");
 ?>

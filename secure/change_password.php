@@ -26,7 +26,6 @@ if(!isset($_SESSION['user_email'])){
             height: 40%;
             margin: 10px auto;
             background color: #fff;
-            border:2px solid black;
             padding: 40px 50px;
         }
         .header{
@@ -44,25 +43,25 @@ if(!isset($_SESSION['user_email'])){
 </div>
     <div class='row'>
     <div class='col-sm-12'>
-        <div class='main-content'>
+        <div class='main-content gradient-bg'>
         <div class='header'>
-        <h3 class='text-info' style='text-align:center;'><strong>Change Password</strong></h3><hr>    
+        <h3 style='text-align:center;color: white;'><strong>Change Password</strong></h3><hr>    
         </div>
             <div class='l_pass'>
-            <form action="" method="get">
+            <form action="" method="post">
                 <div class='input-group'>
                 <span class='input-group-addon'><i class='glyphicon glyphicon-lock'></i></span>
                     <input class='form-control' type='password' name='pass' placeholder='Enter new Password' required id='password'>
                 
                 </div><br><br>
-                
+                <pre class='text'>Enter your first pet's name down below:</pre>
                 <div class='input-group'>
                 <span class='input-group-addon'><i class='glyphicon glyphicon-lock'></i></span>
                      <input type='password' name='pass1' class='form-control' placeholder='Re-enter new Password' required id='password'>
-
                 </div><br>
-                <center><button id='signup' class='btn btn-info btn-lg' name='change'>Save Changes</button></center></form><br><br>
-                <center><a style='text-decoration: none; float: right;' href='signin.php' data-toggle='tooltip' title='Signin'>Back to Login</a><br><br></center>
+                <center><button id='signup' class='btn btn-info btn-lg' name='change'>Save Changes</button>
+                </center></form>
+                <center><a style='text-decoration: none; float: right;color:white;' href='signin.php' data-toogle='tooltip' title='Signin'>Back to Login</a><br><br></center>
             </div>
         </div>
         </div>
@@ -70,7 +69,7 @@ if(!isset($_SESSION['user_email'])){
 </body>
 </html>
 <?php
-if(isset($_GET['change'])){
+if(isset($_POST['change'])){
     $user = $_SESSION['user_email'];
     $get_user = "select * from users where user_email = '$user'";
     $run_user = mysqli_query($con, $get_user);
@@ -78,15 +77,17 @@ if(isset($_GET['change'])){
     
     $user_id = $row['user_id'];
     
-    $pass = $_GET['pass'];
-     $pass1 =  $_GET['pass1'];
+    $pass = htmlentities(mysqli_real_escape_string($con, $_POST['pass']));
+     $pass1 = htmlentities(mysqli_real_escape_string($con, $_POST['pass1']));
+    
     
     if($pass == $pass1){
         if(strlen($pass) >= 9 && strlen($pass) <= 60){
-            $update = "update users set user_pass='$pass' where user_id='$user_id'";
+            $hash = password_hash($pass, PASSWORD_BCRYPT);
+            $update = "update users set user_pass='$hash' where user_id='$user_id'";
+            
             $run = mysqli_query($con, $update);
-            echo "<script>alert('Your Password has been changed! Click Back to login')</script>";
-
+            echo "<script>alert('Your Password has been changed!')</script>";
         }
         else {
              echo "<script>alert('Your Password should be greater than 9 letters')</script>";

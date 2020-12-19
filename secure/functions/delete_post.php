@@ -1,6 +1,6 @@
 <?php
 
-$con = mysqli_connect("localhost","root","","insecurefacehook") or die("Connection was not established");
+$con = mysqli_connect("localhost","root","","securefacehook") or die("Connection was not established");
 
 //function for deleting post
 if(isset($_GET['post_id'])){

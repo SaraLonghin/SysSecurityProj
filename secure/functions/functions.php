@@ -1,6 +1,6 @@
 <?php
 
-$con = mysqli_connect("localhost","root","","insecurefacehook") or die("Connection was not established");
+$con = mysqli_connect("localhost","root","","securefacehook") or die("Connection was not established");
 
 //function for inserting post
 
@@ -9,7 +9,7 @@ function insertPost(){
 		global $con;
 		global $user_id;
 
-		$content = $_POST['content'];
+		$content = htmlentities($_POST['content']);
 		$upload_image = $_FILES['upload_image']['name'];
 		$image_tmp = $_FILES['upload_image']['tmp_name'];
 		$random_number = rand(1, 100);
@@ -90,7 +90,6 @@ function get_posts(){
 
 		$user_name = $row_user['user_name'];
 		$user_image = $row_user['user_image'];
-
 
 		//now displaying posts from database
 
@@ -282,7 +281,7 @@ function single_post(){
             ";
             
             if(isset($_POST['reply'])){
-            $comment = $_POST['comment'];
+            $comment = htmlentities($_POST['comment']);
                 if($comment == ""){
                     echo "<script>alert('Please enter your comment!)</script>";
                     echo "<script>window.open('single.php?post_id=$post_id', '_self')</script>";
@@ -302,7 +301,7 @@ function search_user(){
 	 global $con;
 
 	 if (isset($_GET['search_user_btn'])){
-		 $search = $_GET['search_user'];
+		 $search = htmlentities($_GET['search_user']);
 		 $get_user = "select * from users where f_name like '%$search%' 
 		 OR l_name like '%$search%' OR user_name like '%$search%'";
 	 }
@@ -463,7 +462,7 @@ function results(){
 	 global $con;
 
 	 if (isset($_GET['search'])){
-		$search_query =$_GET['user_query'];
+		$search_query = htmlentities($_GET['user_query']);
 	 }
 		 $get_posts = "select * from posts where post_content like '%$search_query%' or upload_image like '%$search_query%'";
 	 $run_posts = mysqli_query($con,$get_posts);
